@@ -3,6 +3,7 @@ pluginManagement {
         google()
         mavenCentral()
         gradlePluginPortal()
+        maven { url = uri("https://naver.jfrog.io/artifactory/maven/") }
     }
 }
 dependencyResolutionManagement {

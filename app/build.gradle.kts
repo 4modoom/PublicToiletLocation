@@ -1,6 +1,15 @@
+
+import java.io.FileInputStream
+import java.util.*
+
+@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     alias(libs.plugins.com.android.application)
     alias(libs.plugins.org.jetbrains.kotlin.android)
+}
+
+val properties = Properties().apply {
+    load(FileInputStream(rootProject.file("apikey.properties")))
 }
 
 android {
@@ -20,6 +29,7 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
+            manifestPlaceholders["NAVER_CLIENT_ID"] = properties["naverClientId"] as String
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
@@ -33,12 +43,13 @@ android {
 }
 
 dependencies {
-
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.constraintlayout)
+    implementation(libs.play.services.maps)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
+    implementation("com.naver.maps:map-sdk:3.12.0")
 }
