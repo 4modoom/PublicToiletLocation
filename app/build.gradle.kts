@@ -16,6 +16,10 @@ android {
     namespace = "com.samodoom.publictoiletlocation"
     compileSdk = 33
 
+    buildFeatures{
+        viewBinding = true
+    }
+
     defaultConfig {
         applicationId = "com.samodoom.publictoiletlocation"
         minSdk = 24
@@ -51,5 +55,7 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
-    implementation("com.naver.maps:map-sdk:3.12.0")
+    // 네이버 지도 SDK
+    implementation("com.naver.maps:map-sdk:3.17.0")
+    implementation("com.google.android.gms:play-services-location:21.0.1")
 }
